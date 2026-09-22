@@ -1,0 +1,6 @@
+{
+  "name": "Kashinath Alauddin High School and College Result Portal",
+  "description": "Student result search portal for Kashinath Alauddin High School and College, Moulvibazar.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
