@@ -230,7 +230,7 @@ export const ResultSearchForm: React.FC<ResultSearchFormProps> = ({
             ) : (
               <>
                 <Search className="w-4 h-4" />
-                View Result
+                Submit
               </>
             )}
           </button>
