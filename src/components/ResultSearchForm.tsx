@@ -18,6 +18,7 @@ export const ResultSearchForm: React.FC<ResultSearchFormProps> = ({
 }) => {
   const [studentId, setStudentId] = useState('');
   const [session, setSession] = useState('');
+  const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<FormErrors>({});
 
   const validate = (): boolean => {
@@ -25,6 +26,10 @@ export const ResultSearchForm: React.FC<ResultSearchFormProps> = ({
 
     if (!studentId.trim()) {
       newErrors.studentId = 'Please enter search value (e.g. 129698).';
+    }
+
+    if (password !== '2007') {
+      newErrors.password = 'Incorrect password. Please enter the correct password.';
     }
 
     setErrors(newErrors);
@@ -37,13 +42,19 @@ export const ResultSearchForm: React.FC<ResultSearchFormProps> = ({
       onSearch({
         studentId: studentId.trim(),
         session: session.trim() || '2024-2025',
+        password,
       });
+    } else {
+      if (onReset) {
+        onReset();
+      }
     }
   };
 
   const handleClear = () => {
     setStudentId('');
     setSession('');
+    setPassword('');
     setErrors({});
     if (onReset) {
       onReset();
@@ -131,6 +142,41 @@ export const ResultSearchForm: React.FC<ResultSearchFormProps> = ({
                 <p className="mt-1 text-xs text-red-600 flex items-center gap-1 font-medium">
                   <AlertCircle className="w-3.5 h-3.5" />
                   {errors.session}
+                </p>
+              )}
+            </div>
+          </div>
+
+          {/* Field 3: Password */}
+          <div className="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 sm:items-center">
+            <label
+              htmlFor="password-input"
+              className="sm:col-span-4 text-sm font-semibold text-gray-800"
+            >
+              Password <span className="text-red-600 font-bold">*</span>
+            </label>
+            <div className="sm:col-span-8">
+              <input
+                id="password-input"
+                type="password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  if (errors.password) setErrors((prev) => ({ ...prev, password: undefined }));
+                }}
+                placeholder="Enter Password"
+                className={`w-full px-3.5 py-2.5 text-sm rounded border bg-white text-gray-900 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-600/30 ${
+                  errors.password
+                    ? 'border-red-500 focus:border-red-500'
+                    : 'border-gray-300 focus:border-emerald-600'
+                }`}
+                disabled={isLoading}
+                autoComplete="current-password"
+              />
+              {errors.password && (
+                <p className="mt-1 text-xs text-red-600 flex items-center gap-1 font-medium">
+                  <AlertCircle className="w-3.5 h-3.5" />
+                  {errors.password}
                 </p>
               )}
             </div>

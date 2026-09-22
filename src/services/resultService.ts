@@ -47,7 +47,7 @@ export async function fetchStudentResult(
     { code: 'F-101', description: 'Monthly Tuition Fee (Term 1 & 2)', status: 'Paid', amount: 3000 },
     { code: 'F-102', description: 'Annual Session & Development Fee', status: 'Paid', amount: 1500 },
     { code: 'F-103', description: 'ICT & Smart Classroom Charges', status: 'Paid', amount: 550 },
-    { code: 'F-104', description: 'Current Term Tuition & Examination Fee', status: 'Due', amount: 13500 },
+    { code: 'F-104', description: 'Current Term Tuition & Examination Fee', status: 'Due', amount: 15500 },
   ];
 
   return {
@@ -57,10 +57,10 @@ export async function fetchStudentResult(
     rollNo: '87',
     group: 'Humanities',
     session: '2024-2025',
-    amountDue: '৳ 13,500',
+    amountDue: '৳ 15,500',
     photoUrl: '/tammir.jpg',
     feeType: 'General Academic & Examination Fees',
-    totalAmount: 18550,
+    totalAmount: 20550,
     paidAmount: 5050,
     paymentStatus: 'Due',
     statementDate: new Date().toLocaleDateString('en-US', {

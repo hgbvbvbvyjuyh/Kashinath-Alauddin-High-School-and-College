@@ -35,10 +35,12 @@ export interface StudentFeeData {
 export interface SearchFormData {
   studentId: string;
   session: string;
+  password?: string;
 }
 
 export interface FormErrors {
   studentId?: string;
   session?: string;
+  password?: string;
 }
 
